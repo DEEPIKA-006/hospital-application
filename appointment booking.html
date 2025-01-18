@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Appointment Booking</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Pacifico&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOO9xN0ph75MdSBEH0fCEHnHYPg1Q97z8H0g&s');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;  
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 150px; 
+        }
+        input, select {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 170px);
+        }
+        button {
+            font-family: Arial, sans-serif;
+            background-color: #007bff;
+            font-size: 16px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            margin: 0 auto;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .doctor-time {
+            font-size: 16px;
+            color: #555;
+            margin-top: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hospital Appointment Booking</h1>
+        <form id="appointmentForm">
+            <div class="form-group">
+                <label for="patientName">Patient Name:</label>
+                <input type="text" id="patientName" name="patientName" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" placeholder="Enter your age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="doctor">Select Doctor:</label>
+                <select id="doctor" name="doctor" onchange="showDoctorTime()" required>
+                    <option value="">Select Doctor</option>
+                    <option value="Dr. Smith">Dr. Radhi</option>
+                    <option value="Dr. Johnson">Dr. Tej</option>
+                    <option value="Dr. Brown">Dr. Ravi</option>
+                </select>
+            </div>
+
+            <p id="doctorTime" class="doctor-time"></p>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+
+    <script>
+        function showDoctorTime() {
+            const doctor = document.getElementById("doctor").value;
+            const doctorTime = document.getElementById("doctorTime");
+
+            const visitingTimes = {
+                "Dr. Smith": "9:00 AM - 12:00 PM",
+                "Dr. Johnson": "1:00 PM - 4:00 PM",
+                "Dr. Brown": "5:00 PM - 8:00 PM"
+            };
+
+            doctorTime.textContent = visitingTimes[doctor] || "";
+        }
+
+        document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const doctor = document.getElementById("doctor").value;
+            const doctorTime = document.getElementById("doctorTime").textContent;
+
+            if (!doctorTime) {
+                alert("Please select a doctor.");
+                return;
+            }
+
+            alert("Appointment booked successfully!");
+
+            document.getElementById("appointmentForm").reset();
+            document.getElementById("doctorTime").textContent = "";
+        });
+    </script>
+</body>
+</html>
