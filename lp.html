@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .login-container {
+            margin: 100px auto;
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+             background-color: #007bff; /* Blue background */
+             color: #fff; /* White text */
+             border: none; /* Remove border */
+             padding: 10px 20px; /* Adjust padding as needed */
+            cursor: pointer; /* Change cursor on hover */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Adjust font size */
+            font-weight: bold; /* Make text bold */
+        }
+ 
+        button:hover {
+              background-color: #0069d9; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script>
+const loginForm = document.querySelector('form');
+loginForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent default form submission
+
+  // Get the username and password values
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  // Perform validation or other checks here
+
+  // Simulate successful login (replace with actual authentication logic)
+  if (username !== ' ' && password !== ' ') {
+    alert('Login successful!');
+    // Redirect to the desired page after successful login
+    window.location.href = 'home.html'; // Replace 'dashboard.html' with the actual URL
+  } else {
+    alert('Invalid username or password.');
+  }
+});
+    </script>
+</body>
+</html>
