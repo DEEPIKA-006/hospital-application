@@ -21,7 +21,7 @@
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox">Remember Me</label>
-                <a href ="pass.html">Forgot Password?</a>
+                <a href ="forgot password.html">Forgot Password?</a>
             </div>
             <button type="submit" class="btn">LOGIN</button>
 
@@ -31,6 +31,27 @@
             </div>
         </form>
        </div>
+       <script>
+        const loginForm = document.querySelector('form');
+        loginForm.addEventListener('submit', (event) => {
+          event.preventDefault(); // Prevent default form submission
+        
+          // Get the username and password values
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+        
+          // Perform validation or other checks here
+        
+          // Simulate successful login (replace with actual authentication logic)
+          if (username !== ' ' && password !== ' ') {
+            alert('Login successful!');
+            // Redirect to the desired page after successful login
+            window.location.href = 'home.html'; // Replace 'dashboard.html' with the actual URL
+          } else {
+            alert('Invalid username or password.');
+          }
+        });
+            </script>s
 
     </body>
 </html>
